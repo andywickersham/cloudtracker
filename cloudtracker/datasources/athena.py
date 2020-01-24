@@ -189,10 +189,19 @@ class Athena(object):
         else:
             self.output_bucket = 's3://aws-athena-query-results-{}-{}'.format(current_account_id, region)
         logging.info('Using output bucket: {}'.format(self.output_bucket))
-        cloudtrail_log_path = 's3://{bucket}/{path}/AWSLogs/{account_id}/CloudTrail'.format(
-            bucket=config['s3_bucket'],
-            path=config['path'],
-            account_id=account['id'])
+
+        if 'organization_id' in config:
+            cloudtrail_log_path = 's3://{bucket}/{path}/AWSLogs/{org_id}/{account_id}/CloudTrail'.format(
+                bucket=config['s3_bucket'],
+                path=config['path'],
+                org_Id=config['organization_id'],
+                account_id=account['id'])
+        else:
+            cloudtrail_log_path = 's3://{bucket}/{path}/AWSLogs/{account_id}/CloudTrail'.format(
+                bucket=config['s3_bucket'],
+                path=config['path'],
+                account_id=account['id'])
+    
         logging.info('Account cloudtrail log path: {}'.format(cloudtrail_log_path))
 
         # Open connections to needed AWS services
