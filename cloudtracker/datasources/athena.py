@@ -194,7 +194,7 @@ class Athena(object):
             cloudtrail_log_path = 's3://{bucket}/{path}/AWSLogs/{org_id}/{account_id}/CloudTrail'.format(
                 bucket=config['s3_bucket'],
                 path=config['path'],
-                org_Id=config['organization_id'],
+                org_id=config['organization_id'],
                 account_id=account['id'])
         else:
             cloudtrail_log_path = 's3://{bucket}/{path}/AWSLogs/{account_id}/CloudTrail'.format(
