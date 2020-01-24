@@ -32,7 +32,7 @@ setup(
     ),
     long_description=get_description(),
     long_description_content_type='text/markdown',
-    url='https://github.com/duo-labs/cloudtracker',
+    url='https://github.com/andywickersham/cloudtracker',
     entry_points={
         'console_scripts': 'cloudtracker=cloudtracker.cli:main'
     },
